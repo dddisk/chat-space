@@ -43,16 +43,16 @@ ChatSpaceには以下のような機能を実装していきます。
 |user_id | reference | false| index |
 
 #　アソシエーション
-### users
+### user
 * has_many :user_groups
 * has_many :messages
 * has_many :groups, through: :user_groups
 
-### messages
+### message
 * belongs_to :user
 * belongs_to :group
 
-### groups
+### group
 * has_many :users, through: :user_groups
 * has_many :messages
 
