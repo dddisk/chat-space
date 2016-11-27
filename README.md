@@ -4,7 +4,8 @@
 #ChatSpaceの機能
 ChatSpaceには以下のような機能を実装していきます。
 
-### 新規登録機能
+### ChatSpaceの機能
+* 新規登録機能
 * 1対1のチャット機能
 * 複数人によるグループチャット機能
 * チャット相手の検索機能
@@ -19,24 +20,41 @@ ChatSpaceには以下のような機能を実装していきます。
 | column |  type  | null | index |
 |:------:|:------:|:----:|:-----:|
 | name   | string | false| index |
-| e-mail | string | false| index |
+| email  | string | false| index |
 |password| string | false|       |
 
 ### messages
-| column |  type   | null | index |
-|:------:|:-------:|:----:|:-----:|
-| body   | string  |      |       |
-| image  | string  | false|       |
-|group-id| integer | false| index |
-|user-id | integer | false| index |
+| column |   type    | null | index |
+|:------:|:---------:|:----:|:-----:|
+| body   | string    |      |       |
+| image  | string    | false|       |
+|group-id| reference | false| index |
+|user-id | reference | false| index |
 
 ### groups
 | column |  type  | null | index |
 |:------:|:------:|:----:|:-----:|
-| name   | string | false| index|
+| name   | string | false| index |
 
 ### users_groups
-| column |  type   | null | index |
-|:------:|:-------:|:----:|:-----:|
-|group-id| integer | false| index |
-|user-id | integer | false| index |
+| column |   type    | null | index |
+|:------:|:---------:|:----:|:-----:|
+|group-id| reference | false| index |
+|user-id | reference | false| index |
+
+#　アソシエーション
+### users
+* has_many :users_groups
+* has_many :messages
+* has_many :groups, through::users_groups
+
+### messages
+* belongs_to :user
+* belongs_to :group
+
+### groups
+* has_many :users, through::users_groups
+
+### users_groups
+* belongs_to :user
+* belongs_to :group
