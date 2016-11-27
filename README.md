@@ -1,10 +1,10 @@
 # サービス名
-chatspace
+### chatspace
 
 #ChatSpaceの機能
 ChatSpaceには以下のような機能を実装していきます。
 
-    *新規登録機能
+### 新規登録機能
 * 1対1のチャット機能
 * 複数人によるグループチャット機能
 * チャット相手の検索機能
@@ -18,25 +18,25 @@ ChatSpaceには以下のような機能を実装していきます。
 ### users
 | column |  type  | null | index |
 |:------:|:------:|:----:|:-----:|
-| name   | string |      |       |
-| e-mail | string |      |       |
-|password| string |      |       |
+| name   | string | false| index |
+| e-mail | string | false| index |
+|password| string | false|       |
 
 ### messages
 | column |  type   | null | index |
 |:------:|:-------:|:----:|:-----:|
 | body   | string  |      |       |
-| image  | string  |      |       |
-|group-id| integer |      |       |
-|user-id | integer | null | index |
+| image  | string  | false|       |
+|group-id| integer | false| index |
+|user-id | integer | false| index |
 
 ### groups
 | column |  type  | null | index |
 |:------:|:------:|:----:|:-----:|
-| name   | string |      |       |
+| name   | string | false| index|
 
 ### users_groups
 | column |  type   | null | index |
 |:------:|:-------:|:----:|:-----:|
-|group-id| integer |      |       |
-|user-id | integer | null | index |
+|group-id| integer | false| index |
+|user-id | integer | false| index |
