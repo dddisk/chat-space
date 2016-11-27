@@ -29,32 +29,33 @@ ChatSpaceには以下のような機能を実装していきます。
 | body   | string    |      |       |
 | image  | string    | false|       |
 |group-id| reference | false| index |
-|user-id | reference | false| index |
+|user_id | reference | false| index |
 
 ### groups
 | column |  type  | null | index |
 |:------:|:------:|:----:|:-----:|
 | name   | string | false| index |
 
-### users_groups
+### user_groups
 | column |   type    | null | index |
 |:------:|:---------:|:----:|:-----:|
-|group-id| reference | false| index |
-|user-id | reference | false| index |
+|group_id| reference | false| index |
+|user_id | reference | false| index |
 
 #　アソシエーション
 ### users
-* has_many :users_groups
+* has_many :user_groups
 * has_many :messages
-* has_many :groups, through::users_groups
+* has_many :groups, through: :user_groups
 
 ### messages
 * belongs_to :user
 * belongs_to :group
 
 ### groups
-* has_many :users, through::users_groups
+* has_many :users, through: :user_groups
+* has_many :messages
 
-### users_groups
+### user_groups
 * belongs_to :user
 * belongs_to :group
