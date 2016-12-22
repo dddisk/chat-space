@@ -1,0 +1,116 @@
+%p.notification チャットグループが作成されました。
+
+.chat
+  .chat-side
+    .chat-user
+      %h5 daisuke
+      .chat-user__actions
+        %a.chat-user__action
+          %i.fa.fa-pencil-square-o
+        %a.chat-user__action
+          %i.fa.fa-cog
+
+    %ul.chat-groups
+      %li.chat-group
+        %a.chat-group__link
+          %p.chat-group__name TECH::CAMP
+          %p.chat-group__message がんばります
+      %li.chat-group
+        %a.chat-group__link
+          %p.chat-group__name test1
+          %p.chat-group__message まだメッセージはありません。
+      %li.chat-group
+        %a.chat-group__link
+          %p.chat-group__name test2
+          %p.chat-group__message まだメッセージはありません。
+      %li.chat-group
+        %a.chat-group__link
+          %p.chat-group__name test3
+          %p.chat-group__message まだメッセージはありません。
+      %li.chat-group
+        %a.chat-group__link
+          %p.chat-group__name test4
+          %p.chat-group__message まだメッセージはありません。
+      %li.chat-group
+        %a.chat-group__link
+          %p.chat-group__name test5
+          %p.chat-group__message まだメッセージはありません。
+      %li.chat-group
+        %a.chat-group__link
+          %p.chat-group__name test6
+          %p.chat-group__message まだメッセージはありません。
+      %li.chat-group
+        %a.chat-group__link
+          %p.chat-group__name test7
+          %p.chat-group__message まだメッセージはありません。
+
+  .chat-main
+    .chat-header
+      .chat-header--left
+        %h2 TECH::CAMP
+        %p.chat-header__users
+          Members:
+          %span.chat-header__user daisuke
+          %span.chat-header__user shiroma
+          %span.chat-header__user ddd
+      .chat-header--right
+        %a.chat-header__edit-btn Edit
+
+    .chat-body
+      %ul.chat-messages
+        %li.chat-message
+          .chat-message__header
+            %p.chat-message__name shiroma
+            %p.chat-message__time 2016/12/12 09:12:21
+          %p.chat-message__body テスト
+        %li.chat-message
+          .chat-message__header
+            %p.chat-message__name shiroma
+            %p.chat-message__time 2016/12/12 09:12:21
+          %p.chat-message__body テスト
+        %li.chat-message
+          .chat-message__header
+            %p.chat-message__name shiroma
+            %p.chat-message__time 2016/12/12 09:12:21
+          %p.chat-message__body テスト
+        %li.chat-message
+          .chat-message__header
+            %p.chat-message__name shiroma
+            %p.chat-message__time 2016/12/12 09:12:21
+          %p.chat-message__body テスト
+        %li.chat-message
+          .chat-message__header
+            %p.chat-message__name shiroma
+            %p.chat-message__time 2016/12/12 09:12:21
+          %p.chat-message__body 打flkッッッッs；fjかsdjfぁdsf；だsfjdskfjさd；lfkjdsf；djsfkjdさf；djfjkj
+        %li.chat-message
+          .chat-message__header
+            %p.chat-message__name shiroma
+            %p.chat-message__time 2016/12/12 09:12:21
+          %p.chat-message__body テスト
+        %li.chat-message
+          .chat-message__header
+            %p.chat-message__name shiroma
+            %p.chat-message__time 2016/12/12 09:12:21
+          %p.chat-message__body テスト
+        %li.chat-message
+          .chat-message__header
+            %p.chat-message__name shiroma
+            %p.chat-message__time 2016/12/12 09:12:21
+          %p.chat-message__body テスト
+        %li.chat-message
+          .chat-message__header
+            %p.chat-message__name shiroma
+            %p.chat-message__time 2016/12/12 09:12:21
+          %p.chat-message__body テスト
+        %li.chat-message
+
+
+    .chat-footer
+      %form{ action: "#", method: "post" }
+        .chat-footer__body
+          %textarea{ row: "1", placeholder: "type a message" }
+          %label.chat-footer__file
+            %input#message_image{ type: "file", }
+            %i.fa.fa-image
+        %input{ type: "submit", value: "Send" }
