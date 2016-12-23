@@ -16,12 +16,13 @@ html,body{
   min-width: 980px;
   height: 100%;
 
-  .chat-side {
+  &-side {
     float: left;
     height: 100%;
     width: 300px;
+   }
 
-    .chat-user {
+    &-user {
       @include clearfix();
       padding: 20px;
       color: #fff;
@@ -34,65 +35,64 @@ html,body{
         font-size: 16px;
       }
 
-      .chat-user__actions {
+      &__actions {
         float: right;
-
-        .chat-user__action {
-          display: inline-block;
-          margin: 15px 0 15px 3px;
-          line-height: 28px;
-          color: #fff;
-          font-size: 20px;
-        }
-
-        .chat-user__action {
-          display: inline-block;
-          margin: 15px 0 15px 3px;
-          line-height: 28px;
-          color: #fff;
-          font-size: 20px;
-        }
       }
+
+        &__action {
+          display: inline-block;
+          margin: 15px 0 15px 3px;
+          line-height: 28px;
+          color: #fff;
+          font-size: 20px;
+        }
+
+        &__action {
+          display: inline-block;
+          margin: 15px 0 15px 3px;
+          line-height: 28px;
+          color: #fff;
+          font-size: 20px;
+         }
     }
 
-    .chat-groups{
+    &-groups{
       height: calc(100% - 100px);
       color: #FFFFFF;
       list-style: none;
       background-color: #2f3e51;
       overflow-y: scroll;
+    }
 
-      .chat-group__link{
+      &-group{
         display: block;
         padding: 20px 20px;
         color: #ffffff;
 
-        .chat-group__name{
+        &__name{
           display: inline-block;
           font-size: 15px;
           margin-bottom: 5px;
         }
-        .chat-group__message{
+        &__message{
           font-size: 11px;
         }
-      }
-    }
   }
 
-  .chat-main{
+  &-main{
     float: left;
     position: relative;
     width: calc(100% - 300px);
     height: 100%;
 
-    .chat-header {
+    &-header {
         @include clearfix();
         padding-right: 40px;
         padding-left: 40px;
         background-color: #fff;
         border-bottom: 1px solid #eee;
 
-        .chat-header--left {
+        &--left {
           float: left;
 
           h2 {
@@ -103,21 +103,21 @@ html,body{
             font-size: 20px;
           }
 
-          .chat-header__users {
+          &__users {
             line-height: 20px;
             color: #999;
             font-size: 12px;
+          }
 
-            .chat-header__user {
+            &__user {
               margin-left: 3px;
             }
-          }
         }
 
-        .chat-header--right {
+        &--right {
           float: right;
 
-          .chat-header__edit-btn {
+          &__edit-btn {
             display: inline-block;
             margin: 28px 0;
             padding-right: 20px;
@@ -131,41 +131,43 @@ html,body{
         }
       }
 
-    .chat-body{
+    &-body{
       position: relative;
       padding: 30px 0;
       height: calc(100% - 250px);
       overflow-y: scroll;
+    }
 
-      .chat-messages{
+      &-messages{
         position: absolute;
         right: 40px;
         left: 40px;
         padding: 0;
         list-style: none;
+      }
 
-        .chat-message{
+        &-message{
           margin-bottom: 40px;
 
-          .chat-message__header{
+          &__header{
             @include clearfix();
             line-height: 20px;
 
-            .chat-message__name{
+            &__name{
               float: left;
               margin-bottom: 10px;
               font-weight: bold;
               font-size: 16px;
               color: #434A54;
             }
-            .chat-message__time{
+            &__time{
               float: left;
               margin-left: 10px;
               color: #aaaaaa;
               font-size: 12px;
             }
           }
-          .chat-message__body{
+          &__body{
             font-size: 14px;
             color: #434A54;
 
@@ -173,12 +175,10 @@ html,body{
               max-width: 300px;
               max-height: 300px;
             }
-          }
         }
-      }
     }
 
-    .chat-footer{
+    &-footer{
       position: absolute;
       right: 0;
       bottom: 0;
@@ -199,7 +199,7 @@ html,body{
         padding: 0
       }
 
-      .chat-footer__body {
+      &__body {
           float: left;
           width: calc(100% - 115px);
           height: 50px;
@@ -214,7 +214,7 @@ html,body{
             display: block;
           }
 
-          .chat-footer__file {
+          &__file {
             position: absolute;
             top: 0;
             right: 0;
