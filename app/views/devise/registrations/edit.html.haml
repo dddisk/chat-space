@@ -15,23 +15,23 @@
             = f.text_field :name, autofocus: true
         .field
           .field-label
-            = f.label :email
+            = f.label :メールアドレス
           .field-input
             = f.email_field :email
         .field
           .field-label
-            = f.label :password
+            = f.label :パスワード
             %i (変更したくない場合は、空白のままにしておいてください)
           .field-input
             = f.password_field :password, autocomplete: "off"
         .field
           .field-label
-            = f.label :password_confirmation
+            = f.label :確認用パスワード
           .field-input
             = f.password_field :password_confirmation, autocomplete: "off"
         .field
           .field-label
-            = f.label :current_password
+            = f.label :現在のパスワード
             %i (変更には現在のパスワードの入力が必要です)
           .field-input
             = f.password_field :current_password, autocomplete: "off"
