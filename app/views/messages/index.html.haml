@@ -7,7 +7,7 @@
       .chat-user__actions
         %a.chat-user__action
           %i.fa.fa-pencil-square-o
-        %a.chat-user__action
+        = link_to edit_user_registration_path(@users), class: "chat-user__action" do
           %i.fa.fa-cog
 
     %ul.chat-groups
