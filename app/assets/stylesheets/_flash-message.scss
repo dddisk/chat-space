@@ -1,0 +1,14 @@
+.flash-message-notice,.flash-message-alert{
+  height: 30px;
+  line-height: 30px;
+  color: white;
+  text-align: center;
+}
+
+.flash-message-notice{
+  background-color: #38aef0;
+}
+
+.flash-message-alert{
+  background-color: #d65f4c;
+}
