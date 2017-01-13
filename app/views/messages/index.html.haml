@@ -2,7 +2,7 @@
 .chat
   .chat-side
     .chat-user
-      %h5 daisuke
+      %h5= current_user.name
       .chat-user__actions
         %a.chat-user__action
         = link_to new_group_path, class: "chat-user__action" do
