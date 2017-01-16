@@ -1,14 +1,20 @@
 class GroupsController < ApplicationController
   def index
   end
-  
+
   def new
     @group = Group.new
   end
 
   def create
-    Group.create(group_params)
-    redirect_to controller: :messages, action: :index
+    @group = Group.new(group_params)
+    if @group.save
+      flash[:notice] = 'チャットグループが作成されました。'
+      redirect_to :root
+    else
+      flash[:alert] = "グループ名を入力してください。"
+      redirect_to new_group_path
+    end
   end
 
   def edit
