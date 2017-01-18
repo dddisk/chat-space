@@ -4,4 +4,5 @@ devise_for :users
 root 'messages#index'
 
 resources :messages, only:[:index]
+resources :groups, only:[:new,:edit,:create]
 end
