@@ -11,38 +11,11 @@
           %i.fa.fa-cog
 
     %ul.chat-groups
-      %li.chat-group
-        %a.chat-group__link
-          %p.chat-group__name test
-          %p.chat-group__message test
-      %li.chat-group
-        %a.chat-group__link
-          %p.chat-group__name test1
-          %p.chat-group__message まだメッセージはありません。
-      %li.chat-group
-        %a.chat-group__link
-          %p.chat-group__name test2
-          %p.chat-group__message まだメッセージはありません。
-      %li.chat-group
-        %a.chat-group__link
-          %p.chat-group__name test3
-          %p.chat-group__message まだメッセージはありません。
-      %li.chat-group
-        %a.chat-group__link
-          %p.chat-group__name test4
-          %p.chat-group__message まだメッセージはありません。
-      %li.chat-group
-        %a.chat-group__link
-          %p.chat-group__name test5
-          %p.chat-group__message まだメッセージはありません。
-      %li.chat-group
-        %a.chat-group__link
-          %p.chat-group__name test6
-          %p.chat-group__message まだメッセージはありません。
-      %li.chat-group
-        %a.chat-group__link
-          %p.chat-group__name test7
-          %p.chat-group__message まだメッセージはありません。
+      - @groups.each do |group|
+        %li.chat-group
+          = link_to group_messages_path(group.id),class: 'chat-group__link' do
+            %p.chat-group__name= group.name
+            %p.chat-group__message= group.name
 
   .chat-main
     .chat-main-header
@@ -54,7 +27,8 @@
           %span.chat-main-header--left__user shiroma
           %span.chat-main-header--left__user ddd
       .chat-main-header--right
-        %a.chat-main-header--right__edit-btn Edit
+        = link_to edit_group_path(@group) do
+          .chat-main-header--right__edit-btn Edit
 
 
     .chat-main-body
