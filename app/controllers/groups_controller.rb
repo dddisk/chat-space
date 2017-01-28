@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-
+before_action :find_params, only: [:edit, :update]
   def index
     @groups = Group.order(created_at: :desc)
   end
@@ -18,11 +18,9 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @group = Group.find(params[:id])
   end
 
   def update
-    @group = Group.find(params[:id])
     if @group.update(group_params)
       redirect_to group_messages_path(@group), notice: 'チャットグループが更新されました'
     else
@@ -34,4 +32,9 @@ class GroupsController < ApplicationController
   def group_params
     params.require(:group).permit(:name, user_ids: [])
   end
+
+  def find_params
+    @group = Group.find(params[:id])
+  end
+
 end
