@@ -33,43 +33,16 @@
 
     .chat-main-body
       %ul.chat-main-messages
-        %li.chat-main-message
-          .chat-main-message__header
-            %p.chat-main-message__header__name shiroma
-            %p.chat-main-message__header__time 2016/12/12 09:12:21
-          %p.chat-main-message__header__body テスト
-        %li.chat-main-message
-        %li.chat-main-message
-          .chat-main-message__header
-            %p.chat-main-message__header__name shiroma
-            %p.chat-main-message__header__time 2016/12/12 09:12:21
-          %p.chat-main-message__header__body テスト
-        %li.chat-main-message
-        %li.chat-main-message
-          .chat-main-message__header
-            %p.chat-main-message__header__name shiroma
-            %p.chat-main-message__header__time 2016/12/12 09:12:21
-          %p.chat-main-message__header__body テスト
-        %li.chat-main-message
-        %li.chat-main-message
-          .chat-main-message__header
-            %p.chat-main-message__header__name shiroma
-            %p.chat-main-message__header__time 2016/12/12 09:12:21
-          %p.chat-main-message__header__body テスト
-        %li.chat-main-message
-        %li.chat-main-message
-          .chat-main-message__header
-            %p.chat-main-message__header__name shiroma
-            %p.chat-main-message__header__time 2016/12/12 09:12:21
-          %p.chat-main-message__header__body テスト
-        %li.chat-main-message
-        %li.chat-main-message
-          .chat-main-message__header
-            %p.chat-main-message__header__name shiroma
-            %p.chat-main-message__header__time 2016/12/12 09:12:21
-          %p.chat-main-message__header__body テスト
-        %li.chat-main-message
-
+        - @messages.each do |message|
+          %li.chat-main-message
+            .chat-main-message__header
+              %p.chat-main-message__header__name
+                = message.user.name
+              %p.chat-main-message__header__time
+                = message.created_at
+            %p.chat-main-message__header__body
+              = message.body
+          %li.chat-main-message
 
     .chat-main-footer
       = form_for [@group, @message] do |f|

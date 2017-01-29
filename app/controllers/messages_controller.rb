@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
     @groups = Group.order(created_at: :desc)
     @group = Group.find(params[:group_id])
     @message = Message.new
+    @messages = @group.messages
   end
 
   def create
@@ -18,7 +19,7 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:body)
+    params.require(:message).permit(:body).merge(group_id: params[:group_id], user_id: current_user.id)
   end
 
 end
