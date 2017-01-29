@@ -23,9 +23,9 @@
         %h2 TECH::CAMP
         %p.chat-main-header--left__users
           Members:
-          %span.chat-main-header--left__user daisuke
-          %span.chat-main-header--left__user shiroma
-          %span.chat-main-header--left__user ddd
+          - @group.users.each do |user|
+            %span.chat-main-header--left__user
+              = user.name
       .chat-main-header--right
         = link_to edit_group_path(@group) do
           .chat-main-header--right__edit-btn Edit
