@@ -23,9 +23,9 @@
         %h2 TECH::CAMP
         %p.chat-main-header--left__users
           Members:
-          %span.chat-main-header--left__user daisuke
-          %span.chat-main-header--left__user shiroma
-          %span.chat-main-header--left__user ddd
+          - @group.users.each do |user|
+            %span.chat-main-header--left__user
+              = user.name
       .chat-main-header--right
         = link_to edit_group_path(@group) do
           .chat-main-header--right__edit-btn Edit
@@ -33,49 +33,23 @@
 
     .chat-main-body
       %ul.chat-main-messages
-        %li.chat-main-message
-          .chat-main-message__header
-            %p.chat-main-message__header__name shiroma
-            %p.chat-main-message__header__time 2016/12/12 09:12:21
-          %p.chat-main-message__header__body テスト
-        %li.chat-main-message
-        %li.chat-main-message
-          .chat-main-message__header
-            %p.chat-main-message__header__name shiroma
-            %p.chat-main-message__header__time 2016/12/12 09:12:21
-          %p.chat-main-message__header__body テスト
-        %li.chat-main-message
-        %li.chat-main-message
-          .chat-main-message__header
-            %p.chat-main-message__header__name shiroma
-            %p.chat-main-message__header__time 2016/12/12 09:12:21
-          %p.chat-main-message__header__body テスト
-        %li.chat-main-message
-        %li.chat-main-message
-          .chat-main-message__header
-            %p.chat-main-message__header__name shiroma
-            %p.chat-main-message__header__time 2016/12/12 09:12:21
-          %p.chat-main-message__header__body テスト
-        %li.chat-main-message
-        %li.chat-main-message
-          .chat-main-message__header
-            %p.chat-main-message__header__name shiroma
-            %p.chat-main-message__header__time 2016/12/12 09:12:21
-          %p.chat-main-message__header__body テスト
-        %li.chat-main-message
-        %li.chat-main-message
-          .chat-main-message__header
-            %p.chat-main-message__header__name shiroma
-            %p.chat-main-message__header__time 2016/12/12 09:12:21
-          %p.chat-main-message__header__body テスト
-        %li.chat-main-message
-
+        - @messages.each do |message|
+          %li.chat-main-message
+            .chat-main-message__header
+              %p.chat-main-message__header__name
+                = message.user.name
+              %p.chat-main-message__header__time
+                = message.created_at.strftime("%Y-%m-%d %H:%M:%S")
+            %p.chat-main-message__header__body
+              = message.body
+          %li.chat-main-message
 
     .chat-main-footer
-      %form{ action: "#", method: "post" }
+      = form_for [@group, @message] do |f|
         .chat-main-footer__body
-          %textarea{ row: "1", placeholder: "type a message" }
+          = f.text_area :body, row: "1", placeholder: "type a message"
           %label.chat-main-footer__body__file
-            %input#message_image{ type: "file", }
+            = f.file_field :image
             %i.fa.fa-image
-        %input{ type: "submit", value: "Send" }
+        = f.submit "Send", id: "submit"
+
