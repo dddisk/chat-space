@@ -1,6 +1,6 @@
 require 'faker'
 FactoryGirl.define do
   factory :message do
-    body  {Faker::Lorem.sentence}
+    body  { Faker::Lorem.sentence }
   end
 end
