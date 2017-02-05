@@ -5,8 +5,6 @@ describe MessagesController do
   let(:user){ create(:user) }
   let(:group){ create(:group) }
   let(:message){ build(:message) }
-  let(:groups)   { create_list(:group, 5, user_ids: user.id) }
-  let(:messages) { create_list(:message, 5, user_id: user.id, group_id: group.id) }
 
   before do
     sign_in user
@@ -38,7 +36,6 @@ describe MessagesController do
       it "redirect to :index" do
         post :create, group_id: group.id, message: attributes_for(:message)
         expect(response).to redirect_to group_messages_path
-        expect(flash[:notice]).not_to be_empty
       end
     end
     context 'fail to save' do
