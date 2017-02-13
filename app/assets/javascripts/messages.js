@@ -25,13 +25,11 @@ $(function(){
        })
 
        .done(function(data) {
-        console.log("success");
          var html = buildHTML(data);
          $('.chat-main-messages').append(html);
          textField.val("");
        })
        .fail(function() {
-        console.log("error")
          alert('メッセージを入力してください。');
        });
    });

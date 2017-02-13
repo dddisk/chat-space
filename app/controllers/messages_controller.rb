@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
     @groups = Group.order(created_at: :asc)
     @group = Group.find(params[:group_id])
     @message = Message.new
-    @messages = @group.messages.order("created_at ASC")
+    @messages = @group.messages.order("created_at asc")
   end
 
   def create
@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
     if @message.save
       respond_to do |format|
         format.html { redirect_to group_messages_path, notice: "メッセージ送信に成功しました"}
-        format.json { render json:{
+        format.json { render json: {
           body: @message.body,
           name: @message.user.name,
           created_at: @message.created_at.strftime("%Y/%m/%d %H:%M:%S")
