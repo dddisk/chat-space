@@ -1,10 +1,10 @@
 class MessagesController < ApplicationController
 
   def index
-    @groups = Group.order(created_at: :desc)
+    @groups = Group.order(created_at: :asc)
     @group = Group.find(params[:group_id])
     @message = Message.new
-    @messages = @group.messages.order("created_at DESC")
+    @messages = @group.messages.order("created_at ASC")
   end
 
   def create
