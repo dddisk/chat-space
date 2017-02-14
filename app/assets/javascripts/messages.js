@@ -10,7 +10,7 @@ $(function(){
      return html;
    }
 
-  $('.new_message').on('submit', function(e){
+  $(document).on('submit','#new_message', function(e){
      e.preventDefault();
      var textField = $('#message_body');
      var message = textField.val();
@@ -29,10 +29,10 @@ $(function(){
          var html = buildHTML(data);
          $('.chat-main-messages').append(html);
          textField.val("");
-         $("#submit").prop('disabled', false);
        })
        .fail(function() {
          alert('メッセージを入力してください。');
        });
    });
 });
+
