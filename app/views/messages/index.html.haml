@@ -17,7 +17,7 @@
             %p.chat-group__name= group.name
             %p.chat-group__message
               -if last_message = group.messages.last
-                = last_message.body.presence || "まだメッセージはありません。"
+                = last_message.try(:body) || "まだメッセージはありません。"
 
   .chat-main
     .chat-main-header
