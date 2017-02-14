@@ -1,16 +1,33 @@
 class MessagesController < ApplicationController
 
   def index
-    @groups = Group.order(created_at: :desc)
+    @groups = Group.order(created_at: :asc)
     @group = Group.find(params[:group_id])
     @message = Message.new
-    @messages = @group.messages.order("created_at DESC")
+    @messages = @group.messages.order("created_at asc")
+    respond_to do |format|
+      format.html
+      format.json { render json: {
+        body: @message.body,
+        name: @message.user.name,
+        created_at: @message.created_at.strftime("%Y/%m/%d %H:%M:%S")
+      }
+    }
+    end
   end
 
   def create
     @message = Message.new(message_params)
     if @message.save
-      redirect_to group_messages_path, notice: "メッセージ送信に成功しました"
+      respond_to do |format|
+        format.html { redirect_to group_messages_path, notice: "メッセージ送信に成功しました"}
+        format.json { render json: {
+          body: @message.body,
+          name: @message.user.name,
+          created_at: @message.created_at.strftime("%Y/%m/%d %H:%M:%S")
+        }
+      }
+      end
     else
       redirect_to group_messages_path, alert: "メッセージ送信に失敗しました"
     end
