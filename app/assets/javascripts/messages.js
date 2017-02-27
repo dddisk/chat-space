@@ -14,6 +14,7 @@ $(function(){
      e.preventDefault();
      var textField = $('#message_body');
      var message = textField.val();
+
        $.ajax({
          type: 'POST',
          url: './messages.json',
