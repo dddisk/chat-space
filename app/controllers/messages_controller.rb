@@ -5,15 +5,6 @@ class MessagesController < ApplicationController
     @group = Group.find(params[:group_id])
     @message = Message.new
     @messages = @group.messages.order("created_at asc")
-    respond_to do |format|
-      format.html
-      format.json { render json: {
-        body: @message.body,
-        name: @message.user.name,
-        created_at: @message.created_at.strftime("%Y/%m/%d %H:%M:%S")
-      }
-    }
-    end
   end
 
   def create
