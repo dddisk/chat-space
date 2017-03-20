@@ -42,6 +42,8 @@
                 = message.created_at.strftime("%Y-%m-%d %H:%M:%S")
             %p.chat-main-message__header__body
               = message.body
+              %br
+              = image_tag(message.image)
           %li.chat-main-message
 
     .chat-main-footer
