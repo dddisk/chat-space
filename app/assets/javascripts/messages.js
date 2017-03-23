@@ -1,11 +1,16 @@
 $(function(){
-   function buildHTML(message){
+  function buildHTML(message){
+    if (message.image) {
+      var Image = '<br><img src="' + message.image +'">';
+    } else {
+      var Image='';
+    }
      var html = '<li class="chat-main-message">'+
      '<div class="chat-main-message__header">' +
      '<p class="chat-main-message__header__name">' + message.name + '</p>' +
      '<p class="chat-main-message__header__time">' + message.created_at + '</p>' +
      '</div>' +
-     '<p class="chat-main-message__header__body">' + message.body  + '</p>' + '</li>' +
+     '<p class="chat-main-message__header__body">' + message.body + Image  + '</p>' + '</li>' +
      '<li class="chat-main-message">' + '</li>';
      return html;
    }

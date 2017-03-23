@@ -13,7 +13,7 @@ CarrierWave.configure do |config|
 
     case Rails.env
     when 'development'
-        config.fog_directory  = 'chatspaceimageuploadす'
+        config.fog_directory  = 'chatspaceimageupload'
         config.asset_host = 'https://s3.amazonaws.com/chatspaceimageupload'
     when 'production'
         config.fog_directory  = 'chatspaceimageupload'

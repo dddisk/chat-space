@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
         format.json { render json: {
           body: @message.body,
           name: @message.user.name,
-          image: @message.image.to_s,
+          image: @message.image.url,
           created_at: @message.created_at.strftime("%Y/%m/%d %H:%M:%S")
         }
       }
