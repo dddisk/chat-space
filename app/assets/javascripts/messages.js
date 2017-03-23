@@ -16,18 +16,17 @@ $(function(){
    }
 
   $(document).on('submit','#new_message', function(e){
+    var $form = this;
      e.preventDefault();
      var textField = $('#message_body');
-     var message = textField.val();
+     var fd = new FormData($(this)[0]);
 
        $.ajax({
          type: 'POST',
          url: './messages.json',
-         data: {
-          message: {
-            body: message
-          }
-         },
+         processData: false,
+         contentType: false,
+         data: fd,
         dataType: 'json'
        })
 
@@ -35,6 +34,7 @@ $(function(){
          var html = buildHTML(data);
          $('.chat-main-messages').append(html);
          textField.val("");
+         $form.reset();
        })
        .fail(function() {
          alert('メッセージを入力してください。');
