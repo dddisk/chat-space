@@ -9,12 +9,14 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
+    @message.body = '画像を送信しました。' if message_params[:image] && @message.body.empty?
     if @message.save
       respond_to do |format|
         format.html { redirect_to group_messages_path, notice: "メッセージ送信に成功しました"}
         format.json { render json: {
           body: @message.body,
           name: @message.user.name,
+          image: @message.image.url,
           created_at: @message.created_at.strftime("%Y/%m/%d %H:%M:%S")
         }
       }
@@ -27,7 +29,7 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:body).merge(group_id: params[:group_id], user_id: current_user.id)
+    params.require(:message).permit(:body, :image).merge(group_id: params[:group_id], user_id: current_user.id)
   end
 
 end

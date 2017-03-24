@@ -42,6 +42,8 @@
                 = message.created_at.strftime("%Y-%m-%d %H:%M:%S")
             %p.chat-main-message__header__body
               = message.body
+              - if message.image.url
+                %br = image_tag message.image.url
           %li.chat-main-message
 
     .chat-main-footer
@@ -51,5 +53,5 @@
           %label.chat-main-footer__body__file
             = f.file_field :image
             %i.fa.fa-image
-        = f.submit "Send", id: "submit"
+        = f.submit "Send", id: "submit", method: :post
 

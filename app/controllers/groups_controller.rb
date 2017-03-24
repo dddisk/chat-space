@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
 before_action :find_params, only: [:edit, :update]
   def index
-    @groups = Group.order(created_at: :desc)
+    @groups = Group.order(created_at: :asc)
   end
 
   def new
