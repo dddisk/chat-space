@@ -14,6 +14,11 @@ $(function(){
      '<li class="chat-main-message">' + '</li>';
      return html;
    }
+  function autoScroll(){
+    $('.chat-main-body').animate({
+      scrollTop: $('.chat-main-messages').height() + $('.chat-main-message').height()
+    })
+  };
 
   $(document).on('submit','#new_message', function(e){
     var $form = this;
@@ -35,6 +40,7 @@ $(function(){
          $('.chat-main-messages').append(html);
          textField.val("");
          $form.reset();
+         autoScroll();
        })
        .fail(function() {
          alert('メッセージを入力してください。');
