@@ -4,7 +4,24 @@ class MessagesController < ApplicationController
     @groups = Group.order(created_at: :asc)
     @group = Group.find(params[:group_id])
     @message = Message.new
-    @messages = @group.messages.order("created_at asc")
+    @messages = @group.messages.includes(:user)
+    respond_to do |format|
+        format.html
+        format.json {
+          message_array = []
+          @messages.each do |message|
+            message_array << {
+              body: message.body,
+              name: message.user.name,
+              image_url: message.image.url,
+              created_at: message.created_at.strftime("%Y/%m/%d %H:%M:%S")
+            }
+          end
+          render json: {
+            message: message_array
+          }
+        }
+    end
   end
 
   def create

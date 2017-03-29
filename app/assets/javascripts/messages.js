@@ -14,6 +14,11 @@ $(function(){
      '<li class="chat-main-message">' + '</li>';
      return html;
    }
+  function autoScroll(){
+    $('.chat-main-body').animate({
+      scrollTop: $('.chat-main-messages').height() + $('.chat-main-message').height()
+    })
+  };
 
   $(document).on('submit','#new_message', function(e){
     var $form = this;
@@ -35,10 +40,30 @@ $(function(){
          $('.chat-main-messages').append(html);
          textField.val("");
          $form.reset();
+         autoScroll();
        })
        .fail(function() {
          alert('メッセージを入力してください。');
        });
    });
+  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+    setInterval(function(){
+        var messagelength = $('.chat-main-message').length;
+        $.ajax(document.location.href + '.json',{
+         type: 'GET',
+         dataType: 'json'
+       })
+      .done(function(data) {
+        var datalength = data.message.length;
+        for (var i = messagelength; i < datalength; i++) {
+          var html = buildHTML(data.message[i]);
+          $('.chat-main-messages').append(html);
+       }
+      })
+      .fail(function(){
+        console.log('エラーが発生しました。');
+      });
+    },3000);
+   };
 });
 
