@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
     @groups = Group.order(created_at: :asc)
     @group = Group.find(params[:group_id])
     @message = Message.new
-    @messages = @group.messages.order("created_at asc")
+    @messages = @group.messages.includes(:user)
     respond_to do |format|
         format.html
         format.json {
