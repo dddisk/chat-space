@@ -19,8 +19,8 @@ class MessagesController < ApplicationController
           end
           render json: {
             message: message_array
-      }
-    }
+          }
+        }
     end
   end
 
