@@ -46,5 +46,24 @@ $(function(){
          alert('メッセージを入力してください。');
        });
    });
+  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+    setInterval(function(){
+        var messagelength = $('.chat-main-message').length;
+        $.ajax(document.location.href + '.json',{
+         type: 'GET',
+         dataType: 'json'
+       })
+      .done(function(data) {
+        var datalength = data.message.length;
+        for (var i = messagelength; i < datalength; i++) {
+          var html = buildHTML(data.message[i]);
+          $('.chat-main-messages').append(html);
+       }
+      })
+      .fail(function(){
+        console.log('エラーが発生しました。');
+      });
+    },3000);
+   };
 });
 
